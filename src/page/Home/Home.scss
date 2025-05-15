@@ -1,0 +1,36 @@
+.home-page {
+  padding: 2rem;
+
+  .how-to-find {
+    margin-bottom: 2rem;
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #00497c; // Couleur du titre
+    }
+
+    .steps {
+      list-style-type: decimal;
+      padding-left: 1.5rem;
+
+      .step {
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+
+  .artisans-of-month {
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #00497c;
+    }
+
+    .artisans-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+  }
+}

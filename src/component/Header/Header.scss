@@ -1,0 +1,63 @@
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #f1f8fc; // Couleur d'arrière-plan (issue de la palette)
+
+  .logo-container {
+    margin-right: 2rem;
+
+    .logo {
+      height: 50px; // Ajuste la taille du logo
+    }
+  }
+
+  .main-nav {
+    flex-grow: 1;
+
+    .nav-list {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      .nav-item {
+        margin-right: 1rem;
+
+        a {
+          text-decoration: none;
+          color: #00497c; // Couleur du texte du menu (issue de la palette)
+
+          &:hover {
+            color: #0074c7; // Couleur au survol
+          }
+        }
+      }
+    }
+  }
+
+  .search-bar-container {
+    display: flex;
+
+    .search-input {
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px 0 0 4px;
+      margin-right: 0;
+    }
+
+    .search-button {
+      padding: 0.5rem 1rem;
+      background-color: #0074c7; // Couleur du bouton (issue de la palette)
+      color: white;
+      border: none;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #00497c;
+      }
+    }
+  }
+}

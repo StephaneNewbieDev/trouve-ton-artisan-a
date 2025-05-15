@@ -1,0 +1,27 @@
+.artisan-card {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin: 1rem;
+  width: 300px; // Ajuste la largeur selon tes maquettes
+  text-align: center;
+
+  h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #0074c7; // Couleur du nom
+  }
+
+  .rating {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .specialty {
+    font-size: 1rem;
+  }
+
+  .location {
+    font-size: 0.9rem;
+    color: #666;
+  }
+}
