@@ -1,36 +1,78 @@
+@import '../../scss/variables'; // Importe les variables globales (couleurs, polices, etc.)
+@import '../../scss/mixins';   // Importe les mixins (fonctions Sass réutilisables)
+
 .home-page {
-  padding: 2rem;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   .how-to-find {
-    margin-bottom: 2rem;
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
 
-    h2 {
-      font-size: 1.5rem;
+  h2 {
+    color: blue; // Utilisation d'une variable Bootstrap ou de ta propre variable
+    margin-bottom: 1.5rem;
+  }
+
+  .steps {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .step {
+      background-color: whitesmoke; // Compatible mélange de couleurs pour anciens navigateurs
+      border: 1px solid darken; // Assombrissement d'une couleur
+      padding: 1rem;
       margin-bottom: 1rem;
-      color: #00497c; // Couleur du titre
-    }
+      border-radius: .25rem;
+      width: 75%;
+      box-sizing: border-box;
+      text-align: center;
 
-    .steps {
-      list-style-type: decimal;
-      padding-left: 1.5rem;
-
-      .step {
-        margin-bottom: 0.5rem;
+      &:last-child {
+        margin-bottom: 0;
       }
     }
   }
+}
 
   .artisans-of-month {
+    width: 80%;
+    text-align: center;
+
     h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: #00497c;
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: $secondary-color; // Utilise une variable Sass
     }
 
     .artisans-container {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-around;
+      justify-content: center;
+      gap: 20px; // Espace entre les cartes
+    }
+
+    p {
+      font-size: 18px;
+      color: #777;
+    }
+  }
+}
+
+// Styles pour les écrans plus petits (responsive)
+@media (max-width: 768px) {
+  .home-page {
+    padding: 10px;
+
+    .how-to-find,
+    .artisans-of-month {
+      width: 95%;
     }
   }
 }
