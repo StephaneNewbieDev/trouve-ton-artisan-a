@@ -1,36 +1,139 @@
-.app-footer {
-  background-color: #384050; // Couleur d'arrière-plan (issue de la palette)
-  color: white;
-  padding: 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+@use 'bootstrap/scss/bootstrap' as *;
 
-  .legal-nav {
-    .legal-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
+.main-footer {
+  background-color: #004d9a; // Un bleu similaire à celui de l'exemple
+  color: #fff; // Texte blanc
+  position: relative;
+  // Padding top du footer ajusté pour laisser de la place au demi-ovale
+  padding-top: 50px; // Maintiens un padding pour le contenu du footer
+  overflow: hidden; // Cache ce qui dépasse si le demi-ovale est trop grand ou mal positionné
 
-      .legal-item {
-        margin-right: 1rem;
+  .footer-top-shape {
+    position: absolute;
+    top: 0; // Place la forme tout en haut du footer
+    left: 0;
+    width: 100%;
+    height: 100px; // Hauteur de la forme
+    background-color: #f0f8ff; // La couleur de la forme (bleu très clair ou blanc cassé)
+    
+    // *** C'est la ligne clé à modifier ***
+    border-radius: 0 0 50% 50% / 0 0 100% 100%; // Crée la forme arrondie en bas
 
-        a {
-          color: white;
-          text-decoration: none;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); // Ombre en dessous de la forme
+    z-index: 1; // Assure qu'elle est en dessous du contenu du footer si ce contenu est superposé
+  }
 
-          &:hover {
-            text-decoration: underline;
-          }
-        }
+  .footer-content {
+    position: relative; // S'assure que le contenu du footer est au-dessus de la forme
+    z-index: 2;
+    // ... le reste de tes styles de .footer-content ...
+  }
+
+  .footer-logo-container {
+    display: flex;
+    align-items: center; // Alignement vertical du logo et du titre
+  }
+
+  .footer-logo {
+    max-height: 150px; // Taille du logo du footer
+    width: auto;
+    margin-right: 15px; // Espace entre le logo et le titre
+  }
+
+  .footer-title {
+    font-size: 1.25rem; // Taille des titres de colonne
+    font-weight: 700; // Gras
+    color: #fff;
+    margin-bottom: 1rem; // Marge par défaut Bootstrap
+    margin-top: 80px;
+  }
+
+  .footer-text {
+    font-size: 0.9rem; // Taille du texte des paragraphes
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8); // Texte légèrement transparent pour les paragraphes
+  }
+
+  .footer-links {
+    padding-left: 0; // Enlève le padding par défaut des listes
+    li {
+      margin-bottom: 8px; // Espace entre les liens de la liste
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    .footer-link {
+      color: #fff;
+      text-decoration: none; // Pas de soulignement par défaut
+      font-size: 0.95rem;
+      &:hover {
+        color: lighten($primary, 20%); // Éclaircit au survol (ou une autre couleur)
+        text-decoration: underline; // Souligne au survol
       }
     }
   }
 
-  .contact-info {
-    p {
-      margin: 0.5rem 0;
+  .footer-divider {
+    border-top: 1px solid rgba(255, 255, 255, 0.2); // Ligne de séparation légère
+  }
+
+  .footer-bottom-links {
+    .list-inline-item {
+      margin-right: 15px; // Espace entre les liens du bas
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    .footer-link {
+      font-size: 0.85rem; // Plus petit pour les liens légaux
+      color: rgba(255, 255, 255, 0.7);
+      &:hover {
+        color: #fff;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .social-icons {
+    .list-inline-item {
+      margin-right: 15px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    .social-icon {
+      color: #fff;
+      font-size: 1.5rem; // Taille des icônes
+      &:hover {
+        color: lighten($primary, 20%); // Couleur au survol
+      }
+    }
+  }
+
+  // Media queries pour l'adaptation mobile/tablette (les classes Bootstrap s'en occupent déjà pas mal)
+  @include media-breakpoint-down(md) {
+    .footer-logo-container,
+    .footer-title,
+    .footer-text,
+    .footer-links,
+    .footer-bottom-links,
+    .social-icons {
+      text-align: center; // Centrer le texte sur les petits écrans
+    }
+    .footer-logo-container {
+      justify-content: center; // Centrer le logo et le texte associé
+    }
+    .footer-bottom-links {
+      display: block; // Empile les liens sur mobile
+      li {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 5px;
+      }
+    }
+    .social-icons {
+      margin-top: 15px; // Espace au-dessus des icônes sur mobile
+      justify-content: center; // Centrer les icônes
     }
   }
 }

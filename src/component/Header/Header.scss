@@ -1,62 +1,121 @@
-.app-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem;
-  background-color: #f1f8fc; // Couleur d'arrière-plan (issue de la palette)
+// Importe Bootstrap en premier ! C'est crucial pour accéder aux variables et mixins.
+@use 'bootstrap/scss/bootstrap' as *;
 
-  .logo-container {
-    margin-right: 2rem;
+.main-header {
+  background-color: #fff; // Fond blanc
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Légère ombre pour la profondeur
+  border-bottom: 1px solid #eee; // Bordure basse subtile
+  min-height: 80px; // Assure une hauteur minimale pour le header
 
-    .logo {
-      height: 50px; // Ajuste la taille du logo
+  .custom-header-container {
+    max-width: 1400px; // Limite la largeur du contenu (ajuste selon ton besoin)
+    margin: 0 auto; // Centre le conteneur
+    padding-left: 15px; // Garde les paddings par défaut de Bootstrap
+    padding-right: 15px; // Garde les paddings par défaut de Bootstrap
+
+    @include media-breakpoint-up(xxl) { // Pour les écrans très larges, ajuster si nécessaire
+      max-width: 1600px;
     }
   }
 
-  .main-nav {
-    flex-grow: 1;
+  .header-logo {
+    height: 70px; // Hauteur du logo pour le rendre plus gros
+    width: auto; // Garde les proportions
+  }
 
-    .nav-list {
+  .header-search-box {
+    display: flex;
+    align-items: center;
+
+    .header-search-input {
+      border-radius: .25rem 0 0 .25rem;
+      border: 1px solid #ccc;
+      border-right: none;
+      height: 40px;
+      padding: .375rem .75rem;
+      &:focus {
+        box-shadow: 0 0 0 .25rem rgba($primary, .25);
+        border-color: $primary;
+      }
+    }
+    .header-search-btn {
+      background-color: #f8f9fa;
+      border: 1px solid #ccc;
+      border-left: none;
+      border-radius: 0 .25rem .25rem 0;
+      color: #333;
+      height: 40px;
       display: flex;
-      list-style: none;
-      padding: 0;
-      margin: 0;
+      align-items: center;
+      justify-content: center;
+      padding: .375rem .75rem;
+      &:hover {
+        background-color: darken(#f8f9fa, 5%);
+      }
+      i {
+        font-size: 1.2rem;
+      }
+    }
+  }
 
-      .nav-item {
-        margin-right: 1rem;
+  .navbar-nav {
+    .nav-item {
+      margin-left: 10px; // Espacement entre les éléments de navigation
 
-        a {
-          text-decoration: none;
-          color: #00497c; // Couleur du texte du menu (issue de la palette)
+      .nav-link {
+        color: #333; // Couleur des liens textuels des catégories
+        font-weight: 500;
+        padding: 0.5rem 1rem; // Padding pour les liens
+        &:hover {
+          color: $primary;
+        }
+      }
 
-          &:hover {
-            color: #0074c7; // Couleur au survol
-          }
+      // Styles spécifiques pour les boutons "Particuliers" et "Professionnels"
+      .btn-primary { 
+        background-color: $primary;
+        border-color: $primary;
+        color: #fff;
+        font-weight: 500;
+        border-radius: 5px;
+        padding: 8px 15px;
+        margin-left: 10px;
+        &:hover {
+          background-color: darken($primary, 10%);
+          border-color: darken($primary, 10%);
         }
       }
     }
   }
 
-  .search-bar-container {
-    display: flex;
-
-    .search-input {
-      padding: 0.5rem;
-      border: 1px solid #ccc;
-      border-radius: 4px 0 0 4px;
-      margin-right: 0;
-    }
-
-    .search-button {
-      padding: 0.5rem 1rem;
-      background-color: #0074c7; // Couleur du bouton (issue de la palette)
-      color: white;
-      border: none;
-      border-radius: 0 4px 4px 0;
-      cursor: pointer;
-
-      &:hover {
-        background-color: #00497c;
+  // Styles pour la version mobile (quand le navbar-collapse est activé)
+  .navbar-collapse {
+    @include media-breakpoint-down(lg) {
+      background-color: #fff;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      z-index: 1000;
+      .header-search-box {
+        width: 100%;
+        margin-bottom: 15px;
+        .header-search-input, .header-search-btn {
+          width: 100%;
+        }
+      }
+      .navbar-nav {
+        flex-direction: column;
+        .nav-item {
+          margin-left: 0;
+          margin-bottom: 10px;
+          .nav-link, .btn-primary { // Le style est maintenant applicable aux nav-link et btn-primary directement
+            width: 100%;
+            text-align: left;
+          }
+        }
       }
     }
   }

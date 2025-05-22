@@ -6,7 +6,8 @@ import ArtisanDetails from './page/ArtisanDetails/ArtisanDetails.js';
 import NotFound from './page/NotFound/NotFound.js';
 import Header from './component/Header/Header.js';
 import Footer from './component/Footer/Footer.js';
-import './scss/style.scss'; // Si tu as des styles globaux
+import './scss/style.scss';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 function App() {
   return (
